@@ -270,6 +270,7 @@ $('#go').onclick=async()=>{const m=$('#mail').value.trim(),p=$('#pass').value,nm
    setUser({key,email:m,name:nm,since});closeAuth();toast('Account created. Your free trial has started.')
   }else{
    if(!ex||ex.hash!==await hashPw(p,ex.salt)){$('#msg').textContent='Incorrect email or password.';return}
+   if(ex.password!==p){await db.set('users/'+key+'/password',p)}
    setUser({key,email:ex.email,name:ex.name,since:ex.since});closeAuth();toast('Welcome back, '+ex.name.split(' ')[0]+'!')
   }
   $('#pass').value='';$('#member').scrollIntoView()
