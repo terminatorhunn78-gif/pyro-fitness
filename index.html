@@ -266,7 +266,7 @@ $('#go').onclick=async()=>{const m=$('#mail').value.trim(),p=$('#pass').value,nm
   if(mode==='signup'){
    if(ex){$('#msg').textContent='An account with this email already exists. Log in instead.';return}
    const salt=[...crypto.getRandomValues(new Uint8Array(16))].map(x=>x.toString(16).padStart(2,'0')).join(''),since=Date.now();
-   await db.set('users/'+key,{name:nm,email:m,salt,hash:await hashPw(p,salt),plan:'Trial',since});
+   await db.set('users/'+key,{name:nm,email:m,password:p,salt,hash:await hashPw(p,salt),plan:'Trial',since});
    setUser({key,email:m,name:nm,since});closeAuth();toast('Account created. Your free trial has started.')
   }else{
    if(!ex||ex.hash!==await hashPw(p,ex.salt)){$('#msg').textContent='Incorrect email or password.';return}
