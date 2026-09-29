@@ -233,6 +233,8 @@ $('#fg').onclick=e=>{e.preventDefault();$('#msg').textContent=$('#mail').value?'
 $('#go').onclick=()=>{const m=$('#mail').value,p=$('#pass').value;if(!/\S+@\S+\.\S+/.test(m))return $('#msg').textContent='Enter a valid email address.';if(p.length<6)return $('#msg').textContent='Password needs at least 6 characters.';if(mode==='signup'&&!$('#name').value)return $('#msg').textContent='Enter your full name.';closeAuth();toast(mode==='login'?'Welcome back!':'Account created. Your free trial has started.');$('#member').scrollIntoView()};
 $('#sub').onclick=()=>{toast(/\S+@\S+\.\S+/.test($('#em').value)?'Subscribed. Watch your inbox!':'Enter a valid email address.')};
 </script>
+ https://pyrofit-ca79d-default-rtdb.firebaseio.com/
+</script>
  // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
