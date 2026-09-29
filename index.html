@@ -230,7 +230,7 @@ $('#auth').onclick=e=>{if(e.target.id==='auth')closeAuth()};
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAuth()});
 $('#eye').onclick=()=>{const p=$('#pass'),s=p.type==='password';p.type=s?'text':'password';$('#eye').textContent=s?'Hide':'Show'};
 $('#fg').onclick=e=>{e.preventDefault();$('#msg').textContent=$('#mail').value?'Reset link sent to '+$('#mail').value+'.':'Enter your email first.'};
-$('#go').onclick=()=>{const m=$('#mail').value,p=$('#pass').value;if(!/\S+@\S+\.\S+/.test(m))return $('#msg').textContent='Enter a valid email address.';if(p.length<6)return $('#msg').textContent='Password needs at least 6 characters.';if(mode==='signup'&&!$('#name').value)return $('#msg').textContent='Enter your full name.';closeAuth();toast(mode==='login'?'Welcome back!':'Account created. Your free trial has started.'firebase.database().ref('users/').push({ name: $('#name').val(), email: $('#mail').val() });$('#member').scrollIntoView()};
+$('#go').onclick=()=>{const m=$('#mail').value,p=$('#pass').value;if(!/\S+@\S+\.\S+/.test(m))return $('#msg').textContent='Enter a valid email address.';if(p.length<6)return $('#msg').textContent='Password needs at least 6 characters.';if(mode==='signup'&&!$('#name').value)return $('#msg').textContent='Enter your full name.';closeAuth();toast(mode==='login'?'Welcome back!':'Account created. Your free trial has started.'firebase.database().ref('users/').push({name:$('#name').val(),email:$('#mail').val()});$('#member').scrollIntoView()};
 $('#sub').onclick=()=>{toast(/\S+@\S+\.\S+/.test($('#em').value)?'Subscribed. Watch your inbox!':'Enter a valid email address.')};
 </script>
 https://pyrofit-ca79d-default-rtdb.firebaseio.com/
